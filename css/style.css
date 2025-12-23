@@ -1083,7 +1083,7 @@ section::before {
     height: 3px;
     background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
     background-size: 200% 100%;
-    z-index: 1001;
+    z-index: 1002;
     transform-origin: left;
     transition: transform 0.1s ease;
     animation: gradient-shift 3s ease infinite;
@@ -1102,6 +1102,7 @@ section::before {
     z-index: 1000;
     transition: var(--transition);
     border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    isolation: isolate;
 }
 
 [data-theme="dark"] .navbar {
@@ -1612,6 +1613,8 @@ section::before {
    ================================ */
 section {
     padding: var(--spacing-xl) 0;
+    position: relative;
+    z-index: 1;
 }
 
 .section-header {
@@ -2425,6 +2428,31 @@ section {
         font-size: 11px;
     }
     
+    /* Fix all mobile z-index and stacking issues */
+    * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    section {
+        position: relative;
+        z-index: 1;
+        isolation: isolate;
+    }
+    
+    .hero {
+        z-index: 2 !important;
+    }
+    
+    .navbar {
+        z-index: 1000 !important;
+        isolation: isolate;
+    }
+    
+    .nav-menu {
+        z-index: 999 !important;
+    }
+    
     /* Disable custom cursor on mobile */
     .cursor-glow {
         display: none;
@@ -2454,6 +2482,9 @@ section {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
     
     .nav-menu.active {
@@ -2480,6 +2511,8 @@ section {
     .hero {
         min-height: 100vh;
         padding: 5rem 0 2rem;
+        position: relative;
+        z-index: 2;
     }
     
     .hero-content {
@@ -2487,6 +2520,8 @@ section {
         text-align: center;
         gap: 2rem;
         padding: 1rem;
+        position: relative;
+        z-index: 3;
     }
     
     .hero-name {
@@ -2506,11 +2541,16 @@ section {
     .hero-buttons {
         flex-direction: column;
         width: 100%;
+        gap: 1rem;
+        position: relative;
+        z-index: 10;
     }
     
     .hero-buttons .btn {
         width: 100%;
         justify-content: center;
+        position: relative;
+        z-index: 10;
     }
     
     .hero-social {
@@ -2535,6 +2575,9 @@ section {
     
     .stat-item {
         padding: 1.5rem;
+        position: relative;
+        z-index: 2;
+        background: var(--bg-card);
     }
     
     .stat-number {
@@ -2547,14 +2590,25 @@ section {
         gap: 2rem;
     }
     
+    .skill-card {
+        position: relative;
+        z-index: 2;
+        background: var(--bg-card);
+    }
+    
     /* Contact Mobile */
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        position: relative;
+        z-index: 2;
     }
     
     .contact-form {
         padding: 2rem;
+        position: relative;
+        z-index: 3;
+        background: var(--bg-card);
     }
     
     /* Prevent zoom on iOS input focus */
@@ -2572,9 +2626,40 @@ section {
         gap: 1.5rem;
     }
     
+    .project-card {
+        position: relative;
+        z-index: 2;
+        isolation: isolate;
+    }
+    
+    .project-content {
+        position: relative;
+        z-index: 3;
+    }
+    
+    .project-card {
+        position: relative;
+        overflow: hidden;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+    
+    .project-card {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .project-content {
+        position: relative;
+        z-index: 2;
+    }
+    
     /* Timeline Mobile */
     .timeline-content {
         padding: 1.5rem;
+        position: relative;
+        z-index: 2;
+        background: var(--bg-card);
     }
     
     /* Reduce animations on mobile */
@@ -2738,6 +2823,7 @@ section {
         font-size: 18px !important;
         bottom: 20px !important;
         right: 20px !important;
+        z-index: 997 !important;
     }
     
     /* Disable Three.js and heavy effects on mobile */
@@ -2754,6 +2840,7 @@ section {
         bottom: 80px;
         right: 20px;
         font-size: 18px;
+        z-index: 997;
     }
     
     /* FPS Monitor */
