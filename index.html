@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#667eea">
     <meta name="description" content="Mehdi Ebrahimzadeh - Software Engineering Student & Full-Stack Developer">
     <meta name="author" content="Mehdi Ebrahimzadeh">
     <meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architect, Backend Developer, Mehdi Ebrahimzadeh">
@@ -19,7 +20,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,22 +35,42 @@
 <body>
     <!-- Loading Screen -->
     <div class="loader-wrapper">
-        <div class="loader">
-            <div class="loader-inner">
-                <div class="loader-line-wrap">
-                    <div class="loader-line"></div>
+        <div class="terminal-loader">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-btn red"></span>
+                    <span class="terminal-btn yellow"></span>
+                    <span class="terminal-btn green"></span>
                 </div>
-                <div class="loader-line-wrap">
-                    <div class="loader-line"></div>
+                <div class="terminal-title">mehdi@portfolio ~ % </div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-text" id="terminal-text-1"></span>
+                    <span class="terminal-cursor">|</span>
                 </div>
-                <div class="loader-line-wrap">
-                    <div class="loader-line"></div>
+                <div class="terminal-line" id="terminal-line-2" style="display: none;">
+                    <span class="terminal-output" id="terminal-output-1"></span>
                 </div>
-                <div class="loader-line-wrap">
-                    <div class="loader-line"></div>
+                <div class="terminal-line" id="terminal-line-3" style="display: none;">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-text" id="terminal-text-2"></span>
+                    <span class="terminal-cursor">|</span>
                 </div>
-                <div class="loader-line-wrap">
-                    <div class="loader-line"></div>
+                <div class="terminal-line" id="terminal-line-4" style="display: none;">
+                    <span class="terminal-output" id="terminal-output-2"></span>
+                </div>
+                <div class="terminal-line" id="terminal-line-5" style="display: none;">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-text" id="terminal-text-3"></span>
+                    <span class="terminal-cursor">|</span>
+                </div>
+                <div class="terminal-progress" id="terminal-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">Loading... 0%</div>
                 </div>
             </div>
         </div>
@@ -76,6 +98,9 @@
     
     <!-- Interactive Mouse Trail -->
     <canvas id="mouse-trail"></canvas>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -115,7 +140,7 @@
                         <h1 class="hero-greeting glitch-text" data-text="Hi, I'm">Hi, I'm</h1>
                     </div>
                     <div class="reveal-text">
-                        <h2 class="hero-name gradient-morph split-text" data-splitting>Mehdi Ebrahimzadeh</h2>
+                        <h2 class="hero-name gradient-morph">Mehdi Ebrahimzadeh</h2>
                     </div>
                     <div class="hero-title">
                         <span class="typing-wrapper">
@@ -131,6 +156,10 @@
                         <a href="#projects" class="btn btn-primary ripple-effect magnetic-button">
                             <span>View My Work</span>
                             <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="Mehdi_Ebrahimzadeh_Resume.pdf" download class="btn btn-secondary ripple-effect magnetic-button">
+                            <span>Download Resume</span>
+                            <i class="fas fa-download"></i>
                         </a>
                         <a href="#contact" class="btn btn-secondary ripple-effect magnetic-button">
                             <span>Get In Touch</span>
@@ -179,8 +208,8 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
+                <h2 class="section-title neon-glow">About Me</h2>
+                <p class="section-subtitle gradient-text">Get to know me better</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -198,7 +227,7 @@
                     </p>
                     <div class="about-stats">
                         <div class="stat-item">
-                            <div class="stat-number" data-target="4">0</div>
+                            <div class="stat-number" data-target="2">0</div>
                             <div class="stat-label">Years Experience</div>
                         </div>
                         <div class="stat-item">
@@ -233,7 +262,7 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title neon-glow">Experience</h2>
                 <p class="section-subtitle">My professional journey</p>
             </div>
             <div class="timeline">
@@ -335,7 +364,7 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title neon-glow">Featured Projects</h2>
                 <p class="section-subtitle">Things I've built</p>
             </div>
             <div class="projects-grid">
@@ -573,7 +602,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
+                <h2 class="section-title neon-glow">Get In Touch</h2>
                 <p class="section-subtitle">Let's build something amazing together</p>
             </div>
             <div class="contact-content">

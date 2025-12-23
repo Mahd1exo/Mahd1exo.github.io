@@ -102,21 +102,131 @@ if (matrixCanvas && !isMobile) {
 }
 
 // ================================
-// LOADING SCREEN
+// TERMINAL LOADING SCREEN
 // ================================
-window.addEventListener('load', () => {
+function initTerminalLoader() {
+    const terminalCommands = [
+        {
+            text: 'whoami',
+            output: 'Mehdi Ebrahimzadeh - Software Engineer',
+            delay: 50
+        },
+        {
+            text: 'cat skills.txt',
+            output: 'Full-Stack Development | Cloud Architecture | AI/ML',
+            delay: 40
+        },
+        {
+            text: 'npm run build-portfolio',
+            output: '',
+            delay: 30
+        }
+    ];
+
+    let currentCommand = 0;
+    let currentChar = 0;
+
+    function typeTerminalText() {
+        const command = terminalCommands[currentCommand];
+        const textElement = document.getElementById(`terminal-text-${currentCommand + 1}`);
+        const lineElement = document.getElementById(`terminal-line-${currentCommand + 2}`);
+        const outputElement = document.getElementById(`terminal-output-${currentCommand + 1}`);
+        
+        if (!textElement) return;
+        
+        if (currentChar < command.text.length) {
+            textElement.textContent += command.text[currentChar];
+            currentChar++;
+            setTimeout(typeTerminalText, command.delay);
+        } else {
+            // Command typed, show output
+            if (lineElement) lineElement.style.display = 'flex';
+            if (outputElement && command.output) {
+                setTimeout(() => {
+                    outputElement.textContent = command.output;
+                    
+                    // Move to next command
+                    currentCommand++;
+                    currentChar = 0;
+                    
+                    if (currentCommand < terminalCommands.length) {
+                        const nextLine = document.getElementById(`terminal-line-${currentCommand + 2}`);
+                        if (nextLine) {
+                            setTimeout(() => {
+                                nextLine.style.display = 'flex';
+                                typeTerminalText();
+                            }, 300);
+                        }
+                    } else {
+                        // All commands done, show progress
+                        setTimeout(showProgress, 500);
+                    }
+                }, 300);
+            } else {
+                // No output, show progress immediately
+                setTimeout(showProgress, 500);
+            }
+        }
+    }
+
+    function showProgress() {
+        const progressElement = document.getElementById('terminal-progress');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        
+        if (progressElement) {
+            progressElement.style.display = 'block';
+            
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 2;
+                if (progressFill) progressFill.style.width = progress + '%';
+                if (progressText) progressText.textContent = `Building portfolio... ${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        if (loaderWrapper) {
+                            loaderWrapper.classList.add('fade-out');
+                            setTimeout(() => {
+                                loaderWrapper.style.display = 'none';
+                                
+                                // Show particles after terminal loader is completely hidden
+                                const particlesContainer = document.getElementById('particles-js');
+                                if (particlesContainer) {
+                                    particlesContainer.style.display = 'block';
+                                }
+                            }, 500);
+                        }
+                    }, 500);
+                }
+            }, 20);
+        }
+    }
+
+    // Start terminal animation after a short delay
     setTimeout(() => {
-        loaderWrapper.classList.add('fade-out');
-        setTimeout(() => {
-            loaderWrapper.style.display = 'none';
-        }, 500);
-    }, 1500);
-});
+        typeTerminalText();
+    }, 500);
+}
+
+// Initialize terminal loader when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerminalLoader);
+} else {
+    initTerminalLoader();
+}
 
 // ================================
 // PARTICLES.JS CONFIGURATION (Optimized)
 // ================================
+// Hide particles initially and show after terminal loader
 if (typeof particlesJS !== 'undefined' && !isMobile) {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+        particlesContainer.style.display = 'none';
+    }
+    
     particlesJS('particles-js', {
         particles: {
             number: {
@@ -217,10 +327,22 @@ themeToggle.addEventListener('click', () => {
 });
 
 // ================================
-// NAVBAR SCROLL EFFECT
+// NAVBAR SCROLL EFFECT & PROGRESS BAR
 // ================================
+const scrollProgress = document.querySelector('.scroll-progress');
+
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    // Update progress bar
+    if (scrollProgress) {
+        scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
+    }
+    
+    // Navbar scroll effect
+    if (scrollTop > 100) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
@@ -291,20 +413,20 @@ function typeText() {
     if (isDeleting) {
         typingText.textContent = currentText.substring(0, charIndex - 1);
         charIndex--;
-        typingSpeed = 50;
+        typingSpeed = 30; // Faster delete
     } else {
         typingText.textContent = currentText.substring(0, charIndex + 1);
         charIndex++;
-        typingSpeed = 100;
+        typingSpeed = 80; // Faster typing
     }
     
     if (!isDeleting && charIndex === currentText.length) {
         isDeleting = true;
-        typingSpeed = 2000; // Pause at end
+        typingSpeed = 1500; // Shorter pause at end
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         textIndex = (textIndex + 1) % texts.length;
-        typingSpeed = 500; // Pause before next word
+        typingSpeed = 300; // Shorter pause before next word
     }
     
     setTimeout(typeText, typingSpeed);
@@ -391,8 +513,8 @@ function handleScrollAnimation() {
 }
 
 // Add CSS for AOS animations
-const style = document.createElement('style');
-style.textContent = `
+const aosStyle = document.createElement('style');
+aosStyle.textContent = `
     [data-aos] {
         opacity: 0;
         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -415,7 +537,7 @@ style.textContent = `
         transform: translateY(0) translateX(0);
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(aosStyle);
 
 window.addEventListener('scroll', handleScrollAnimation);
 window.addEventListener('load', handleScrollAnimation);
@@ -1020,29 +1142,38 @@ window.addEventListener('scroll', () => {
 // FLOATING EMOJIS ON SCROLL (Desktop Only)
 // ================================
 let lastScrollY = window.pageYOffset;
+let lastEmojiTime = 0;
 const emojis = ['💻', '🚀', '⚡', '🎨', '🔥', '✨', '💡', '🎯', '🌟', '💪'];
 
 if (!isMobile) {
     window.addEventListener('scroll', () => {
         const currentScrollY = window.pageYOffset;
+        const currentTime = Date.now();
         
-        if (Math.abs(currentScrollY - lastScrollY) > 100) {
-        const emoji = document.createElement('div');
-        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.cssText = `
-            position: fixed;
-            left: ${Math.random() * (window.innerWidth - 50)}px;
-            top: ${window.innerHeight / 2}px;
-            font-size: 30px;
-            pointer-events: none;
-            z-index: 9999;
-            animation: floatUp 2s ease-out forwards;
-        `;
-        
-        document.body.appendChild(emoji);
-        setTimeout(() => emoji.remove(), 2000);
-        
+        // Only spawn emoji every 5 seconds and if scrolled enough
+        if (Math.abs(currentScrollY - lastScrollY) > 150 && (currentTime - lastEmojiTime) > 5000) {
+            // Spawn only 1-2 emojis
+            const emojiCount = Math.random() > 0.5 ? 1 : 2;
+            
+            for (let i = 0; i < emojiCount; i++) {
+                const emoji = document.createElement('div');
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.cssText = `
+                    position: fixed;
+                    left: ${Math.random() * (window.innerWidth - 50)}px;
+                    top: ${window.innerHeight / 2}px;
+                    font-size: 30px;
+                    pointer-events: none;
+                    z-index: 9999;
+                    animation: floatUp 2s ease-out forwards;
+                `;
+                
+                document.body.appendChild(emoji);
+                setTimeout(() => emoji.remove(), 2000);
+            }
+            
             lastScrollY = currentScrollY;
+            lastEmojiTime = currentTime;
         }
     });
 }
@@ -1052,7 +1183,10 @@ floatUpStyle.textContent = `
     @keyframes floatUp {
         0% {
             transform: translateY(0) rotate(0deg);
-            opacity: 1;
+            opacity: 0.9;
+        }
+        80% {
+            opacity: 0.8;
         }
         100% {
             transform: translateY(-200px) rotate(360deg);
@@ -1557,7 +1691,12 @@ const soundSystem = {
         const toggle = document.getElementById('sound-toggle');
         if (!toggle) return;
         
+        const icon = toggle.querySelector('i');
         toggle.classList.toggle('muted', !this.enabled);
+        
+        if (!this.enabled) {
+            icon.className = 'fas fa-volume-mute';
+        }
         
         toggle.addEventListener('click', () => {
             this.enabled = !this.enabled;
@@ -1565,7 +1704,10 @@ const soundSystem = {
             toggle.classList.toggle('muted', !this.enabled);
             
             if (this.enabled) {
+                icon.className = 'fas fa-volume-up';
                 this.sounds.click();
+            } else {
+                icon.className = 'fas fa-volume-mute';
             }
         });
     },
@@ -1694,3 +1836,475 @@ console.log('%c  • Project Card Particles', 'color: #764ba2; font-size: 12px;'
 console.log('%c  • Sound System (Toggle with button)', 'color: #764ba2; font-size: 12px;');
 console.log('%c  • FPS Monitor (Ctrl+F to toggle)', 'color: #764ba2; font-size: 12px;');
 console.log('%c  • Split Text Animations', 'color: #764ba2; font-size: 12px;');
+
+// ================================
+// PARALLAX SCROLLING EFFECT
+// ================================
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.stars-small, .stars-medium, .stars-large');
+    
+    parallaxElements.forEach((el, index) => {
+        const speed = (index + 1) * 0.3;
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+    
+    // Move blobs on scroll
+    const blobs = document.querySelectorAll('.blob');
+    blobs.forEach((blob, index) => {
+        const speed = (index + 1) * 0.05;
+        blob.style.transform = `translate(${Math.sin(scrolled * 0.001) * 50}px, ${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+    });
+});
+
+// ================================
+// INTERACTIVE HOVER EXPLOSIONS
+// ================================
+function createHoverExplosion(x, y) {
+    const colors = ['#667eea', '#764ba2', '#f45c43', '#1a8cff', '#f093fb'];
+    
+    for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            left: ${x}px;
+            top: ${y}px;
+            box-shadow: 0 0 10px currentColor;
+        `;
+        
+        document.body.appendChild(particle);
+        
+        const angle = (Math.PI * 2 * i) / 12;
+        const velocity = 2 + Math.random() * 3;
+        const vx = Math.cos(angle) * velocity;
+        const vy = Math.sin(angle) * velocity;
+        
+        let posX = x;
+        let posY = y;
+        let opacity = 1;
+        
+        function animate() {
+            posX += vx;
+            posY += vy;
+            opacity -= 0.02;
+            
+            particle.style.left = posX + 'px';
+            particle.style.top = posY + 'px';
+            particle.style.opacity = opacity;
+            
+            if (opacity > 0) {
+                requestAnimationFrame(animate);
+            } else {
+                particle.remove();
+            }
+        }
+        
+        animate();
+    }
+}
+
+// Add hover explosions to project cards
+document.querySelectorAll('.project-card, .skill-item, .btn').forEach(el => {
+    el.addEventListener('mouseenter', (e) => {
+        if (!isMobile) {
+            createHoverExplosion(e.clientX, e.clientY);
+        }
+    });
+});
+
+// ================================
+// RAINBOW CURSOR TRAIL
+// ================================
+if (!isMobile) {
+    const colors = ['#667eea', '#764ba2', '#f45c43', '#1a8cff', '#f093fb', '#4facfe'];
+    let colorIndex = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.8) { // Only create trail occasionally for performance
+            const trail = document.createElement('div');
+            trail.style.cssText = `
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: ${colors[colorIndex % colors.length]};
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9998;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                box-shadow: 0 0 10px ${colors[colorIndex % colors.length]};
+                animation: trail-fade 1s ease-out forwards;
+            `;
+            
+            document.body.appendChild(trail);
+            colorIndex++;
+            
+            setTimeout(() => trail.remove(), 1000);
+        }
+    });
+}
+
+// Trail fade animation
+const trailStyle = document.createElement('style');
+trailStyle.textContent = `
+    @keyframes trail-fade {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(trailStyle);
+
+// ================================
+// SECTION ENTRANCE ANIMATIONS (Skip Hero Section)
+// ================================
+const sectionElements = document.querySelectorAll('section:not(#home)');
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'section-entrance 0.8s ease-out forwards';
+        }
+    });
+}, { threshold: 0.1 });
+
+sectionElements.forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(50px)';
+    sectionObserver.observe(section);
+});
+
+const sectionStyle = document.createElement('style');
+sectionStyle.textContent = `
+    @keyframes section-entrance {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(sectionStyle);
+
+// ================================
+// FLOATING EMOJIS ON ACHIEVEMENT HOVER
+// ================================
+document.querySelectorAll('.highlight-item, .stat-item').forEach(item => {
+    item.addEventListener('mouseenter', function(e) {
+        if (isMobile) return;
+        
+        const emojis = ['✨', '🚀', '💫', '⭐', '🌟', '💥', '🎯', '🔥'];
+        const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        const span = document.createElement('span');
+        span.textContent = emoji;
+        span.style.cssText = `
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 1000;
+            animation: float-away 2s ease-out forwards;
+        `;
+        
+        this.style.position = 'relative';
+        this.appendChild(span);
+        
+        setTimeout(() => span.remove(), 2000);
+    });
+});
+
+const emojiStyle = document.createElement('style');
+emojiStyle.textContent = `
+    @keyframes float-away {
+        0% {
+            transform: translate(-50%, -50%) scale(0) rotate(0deg);
+            opacity: 0.9;
+        }
+        70% {
+            opacity: 0.85;
+        }
+        100% {
+            transform: translate(-50%, -200%) scale(1.5) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(emojiStyle);
+
+// ================================
+// LAZY LOADING WITH ANIMATIONS
+// ================================
+const lazyElements = document.querySelectorAll('.project-card, .timeline-item, .skill-item, .stat-item, .highlight-item');
+
+const lazyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0) scale(1)';
+                entry.target.style.filter = 'blur(0)';
+            }, index * 100); // Stagger animation
+            lazyObserver.unobserve(entry.target);
+        }
+    });
+}, { 
+    threshold: 0.1,
+    rootMargin: '50px'
+});
+
+lazyElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(50px) scale(0.95)';
+    element.style.filter = 'blur(5px)';
+    element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    lazyObserver.observe(element);
+});
+
+// ================================
+// PROGRESSIVE TEXT REVEAL (Skip Hero Section)
+// ================================
+const revealTexts = document.querySelectorAll('.section-subtitle, #about .about-text p');
+
+const textObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            textObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+if (!isMobile) {
+    revealTexts.forEach(text => {
+        text.style.opacity = '0';
+        text.style.transform = 'translateY(20px)';
+        text.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        textObserver.observe(text);
+    });
+}
+
+// ================================
+// SKELETON LOADING FOR IMAGES
+// ================================
+const images = document.querySelectorAll('img');
+images.forEach(img => {
+    img.style.backgroundColor = '#2d2d2d';
+    img.style.animation = 'skeleton-pulse 1.5s ease-in-out infinite';
+    
+    img.addEventListener('load', function() {
+        this.style.animation = 'none';
+        this.style.backgroundColor = 'transparent';
+        this.style.opacity = '0';
+        setTimeout(() => {
+            this.style.transition = 'opacity 0.5s ease';
+            this.style.opacity = '1';
+        }, 10);
+    });
+});
+
+// Add skeleton pulse animation
+const skeletonStyle = document.createElement('style');
+skeletonStyle.textContent = `
+    @keyframes skeleton-pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+`;
+document.head.appendChild(skeletonStyle);
+
+// ================================
+// CONTENT PRELOADER
+// ================================
+const preloadContent = () => {
+    // Preload critical fonts
+    const fontLink = document.createElement('link');
+    fontLink.rel = 'preload';
+    fontLink.as = 'font';
+    fontLink.type = 'font/woff2';
+    fontLink.crossOrigin = 'anonymous';
+    
+    // Force layout recalculation for smoother rendering
+    document.body.offsetHeight;
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadContent);
+} else {
+    preloadContent();
+}
+
+// ================================
+// MOBILE OPTIMIZATIONS
+// ================================
+if (isMobile) {
+    // Reduce motion for better performance
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    if (reduceMotion.matches) {
+        document.body.classList.add('reduce-motion');
+    }
+    
+    // Passive event listeners for better scroll performance
+    document.addEventListener('touchstart', function() {}, { passive: true });
+    document.addEventListener('touchmove', function() {}, { passive: true });
+    
+    // Optimize viewport height for mobile browsers
+    const setVH = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
+    
+    // Prevent mobile pull-to-refresh interference
+    let startY = 0;
+    document.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].pageY;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', (e) => {
+        const y = e.touches[0].pageY;
+        if (window.pageYOffset === 0 && y > startY) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu && hamburger) {
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        }
+    });
+}
+
+// ================================
+// INTERSECTION OBSERVER PERFORMANCE
+// ================================
+// Use requestIdleCallback for non-critical animations
+if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+        // Initialize non-critical animations
+        document.querySelectorAll('.project-card, .timeline-item').forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+}
+
+// ================================
+// SMOOTH REVEAL ANIMATIONS
+// ================================
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.stat-item, .highlight-item, .skill-card').forEach(el => {
+    el.classList.add('reveal-element');
+    revealObserver.observe(el);
+});
+
+// Add reveal animation styles
+const revealStyle = document.createElement('style');
+revealStyle.textContent = `
+    .reveal-element {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .reveal-element.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .reduce-motion * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+`;
+document.head.appendChild(revealStyle);
+
+// ================================
+// PERFORMANCE MONITORING
+// ================================
+if ('PerformanceObserver' in window) {
+    const perfObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            if (entry.duration > 50 && !isMobile) {
+                console.warn('Long task detected:', entry.duration);
+            }
+        }
+    });
+    
+    try {
+        perfObserver.observe({ entryTypes: ['longtask'] });
+    } catch (e) {
+        // Long task API not supported
+    }
+}
+
+// ================================
+// ENHANCED BUTTON INTERACTIONS
+// ================================
+document.querySelectorAll('.btn, .social-link').forEach(button => {
+    // Add haptic feedback on mobile
+    button.addEventListener('click', () => {
+        if ('vibrate' in navigator && isMobile) {
+            navigator.vibrate(10);
+        }
+    });
+    
+    // Add pulse effect on focus for accessibility
+    button.addEventListener('focus', function() {
+        this.style.animation = 'pulse 0.5s ease';
+    });
+});
+
+// Add pulse animation
+const pulseStyle = document.createElement('style');
+pulseStyle.textContent = `
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+`;
+document.head.appendChild(pulseStyle);
+
+console.log('🚀 Portfolio loaded successfully!');
+console.log('📱 Mobile device:', isMobile);
+console.log('🎨 All effects initialized!');
