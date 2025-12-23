@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mehdi Ebrahimzadeh - Software Engineering Student & Full-Stack Developer">
+    <meta name="author" content="Mehdi Ebrahimzadeh">
+    <meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architect, Backend Developer, Mehdi Ebrahimzadeh">
+    <meta property="og:title" content="Mehdi Ebrahimzadeh | Software Engineer">
+    <meta property="og:description" content="Software Engineering student at Conestoga College with 4.0 GPA. Co-Founder of Oktav, building scalable distributed systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mahd1exo.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mehdi Ebrahimzadeh | Software Engineer">
+    <meta name="twitter:description" content="Software Engineering student with expertise in distributed systems and cloud architecture">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <title>Mehdi Ebrahimzadeh | Software Engineer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Background Container -->
+    <div id="three-container"></div>
+    
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-rain"></canvas>
+    
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+        <div class="shape shape-7"></div>
+    </div>
+    
+    <!-- Interactive Mouse Trail -->
+    <canvas id="mouse-trail"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">ME</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="reveal-text">
+                        <h1 class="hero-greeting glitch-text" data-text="Hi, I'm">Hi, I'm</h1>
+                    </div>
+                    <div class="reveal-text">
+                        <h2 class="hero-name gradient-morph split-text" data-splitting>Mehdi Ebrahimzadeh</h2>
+                    </div>
+                    <div class="hero-title">
+                        <span class="typing-wrapper">
+                            <span class="typing-text"></span>
+                            <span class="cursor blinking">|</span>
+                        </span>
+                    </div>
+                    <p class="hero-description">
+                        Software Engineering student at Conestoga College with a 4.0 GPA. 
+                        Co-Founder of Oktav, building scalable distributed systems and cloud-native applications.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary ripple-effect magnetic-button">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary ripple-effect magnetic-button">
+                            <span>Get In Touch</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:mehdi.ebr.work@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="blob-container">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path class="blob" fill="url(#gradient)" d="M45.4,-58.8C58.1,-50.3,67.4,-35.6,71.8,-19.3C76.2,-3,75.7,14.9,69.3,30.1C62.9,45.3,50.6,57.8,36.1,64.9C21.6,72,-5.1,73.7,-28.6,68.4C-52.1,63.1,-72.4,50.8,-80.6,33.4C-88.8,16,-84.9,-6.5,-76.7,-25.3C-68.5,-44.1,-56,-59.2,-41.1,-67.2C-26.2,-75.2,-9,-76.1,5.8,-73.8C20.6,-71.5,32.7,-67.3,45.4,-58.8Z" transform="translate(100 100)" />
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="profile-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <p>Scroll Down</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Building the Future, One Line at a Time</h3>
+                    <p>
+                        I'm a passionate Software Engineering student at Conestoga College with a perfect 4.0 GPA, 
+                        specializing in distributed systems and cloud-native architectures. As Co-Founder and Lead 
+                        Software Engineer at Oktav, I've built scalable backend services that handle thousands of 
+                        concurrent users.
+                    </p>
+                    <p>
+                        My journey in tech has taken me from optimizing .NET backends to designing microservices 
+                        architectures with Go and implementing real-time systems with WebSockets. I'm driven by 
+                        challenges that push the boundaries of what's possible.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="4">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="20">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="99.9">0</div>
+                            <div class="stat-label">Uptime %</div>
+                        </div>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Top 10 Finalist at Velocity (U of Waterloo)</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-award"></i>
+                            <span>$29,000 Scholarship from Global Affairs Canada</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-medal"></i>
+                            <span>2nd Place - ConHacks 2025 Hackathon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My professional journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Co-Founder & Lead Software Engineer</h3>
+                            <span class="timeline-company">Oktav</span>
+                            <span class="timeline-date">May 2025 - Sep 2025</span>
+                            <span class="timeline-location">Waterloo, ON</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Built Go/.NET backends with 8 services and 24 gRPC APIs; integrated OAuth2/OIDC with JWT</li>
+                            <li>Cut build time 45% and tripled release speed via CI/CD and Docker containerization</li>
+                            <li>Boosted uptime to 99.9% with structured logging and tracing; reduced MTTR by 38%</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Go</span>
+                            <span class="tech-tag">.NET Core</span>
+                            <span class="tech-tag">gRPC</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Backend Developer & System Designer</h3>
+                            <span class="timeline-company">Versall</span>
+                            <span class="timeline-date">Sep 2024 - May 2025</span>
+                            <span class="timeline-location">Toronto, ON</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Shipped an AI platform with 5 Node.js modules for auth, billing, scheduling, and payments</li>
+                            <li>Engineered scalable WebSocket services with health checks and autoscaling</li>
+                            <li>Reduced MTTR by 29% via Kafka eventing and distributed tracing</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineering Intern</h3>
+                            <span class="timeline-company">Intelligent Innovations Lab</span>
+                            <span class="timeline-date">Jan 2024 - Apr 2025</span>
+                            <span class="timeline-location">Peterborough, ON</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Reduced tech debt 30% with comprehensive documentation and architecture diagrams</li>
+                            <li>Cut deployment time 50% by implementing automated GitHub Actions pipelines</li>
+                            <li>Integrated Flutter and web UIs with backend services</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineering Intern</h3>
+                            <span class="timeline-company">Douran Co.</span>
+                            <span class="timeline-date">Sep 2022 - Apr 2023</span>
+                            <span class="timeline-location">Remote</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Refactored .NET backends using async I/O to boost throughput 30%</li>
+                            <li>Optimized SQL Server and PostgreSQL schemas for 100k+ daily transactions</li>
+                            <li>Cut security incidents 15% via endpoint hardening and code reviews</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">.NET</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Things I've built</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-tilt>
+                    <div class="project-image">
+                        <canvas class="project-particles"></canvas>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Mahd1exo/Health_System" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>BioCheck AI</h3>
+                        <p>Privacy-first medical results pipeline that normalizes data into clinician-ready reports via local APIs.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>ASP.NET Core</span>
+                            <span>PostgreSQL</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <canvas class="project-particles"></canvas>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Mahd1exo/Health-Monitoring-System" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Health Monitoring System</h3>
+                        <p>Monitors vital signs using fuzzy logic and GenAI (OpenAI + Google) for intelligent health analysis.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Go</span>
+                            <span>Rust</span>
+                            <span>OpenAI API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <canvas class="project-particles"></canvas>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Mahd1exo/App-Generator" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Enhanced App Generator</h3>
+                        <p>OpenAI-powered GUI generator with machine learning feedback loop and automated logging.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>scikit-learn</span>
+                            <span>SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <canvas class="project-particles"></canvas>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Mahd1exo/Data-Structures-Demo" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Data Structures Visualizer</h3>
+                        <p>Full-stack educational platform to visualize complex algorithms via interactive components.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>C</span>
+                            <span>CivetWeb</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">My technical expertise</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category" data-aos="fade-up">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">C#</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Go</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TypeScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C/C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks & Libraries</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">.NET Core</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">gRPC</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Django</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Kubernetes</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AWS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CI/CD</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications" data-aos="fade-up">
+                <h3>Certifications</h3>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Certified Ethical Hacker (CEH)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>SANS SEC 504</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fab fa-linux"></i>
+                        <span>LPIC-1 & LPIC-2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's build something amazing together</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item" data-aos="fade-right">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:mehdi.ebr.work@gmail.com">mehdi.ebr.work@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item" data-aos="fade-right" data-aos-delay="100">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <a href="tel:+15145505492">+1 514-550-5492</a>
+                        </div>
+                    </div>
+                    <div class="contact-item" data-aos="fade-right" data-aos-delay="200">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Waterloo, ON, Canada</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" data-aos="fade-left">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">ME</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:mehdi.ebr.work@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <p class="footer-copyright">
+                    &copy; 2025 Mehdi Ebrahimzadeh. Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Code Rain Container -->
+    <div id="code-rain" class="code-rain-container"></div>
+    
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+    
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="sound-toggle" aria-label="Toggle sound effects">
+        <i class="fas fa-volume-up"></i>
+    </button>
+    
+    <!-- FPS Monitor (Debug) -->
+    <div class="fps-monitor" id="fps-monitor">60 FPS</div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
