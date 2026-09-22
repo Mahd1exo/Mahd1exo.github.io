@@ -2,711 +2,651 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="theme-color" content="#667eea">
-    <meta name="description" content="Mehdi Ebrahimzadeh - Software Engineering Student & Full-Stack Developer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#08090b" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+
+    <title>Mehdi Ebrahimzadeh — Performance &amp; Software Engineer</title>
+    <meta name="description" content="Mehdi Ebrahimzadeh is a performance and software engineer in Waterloo, Ontario. Performance Engineer co-op at SOTI, co-founder of Eyval (Velocity), and Software Engineering Technology student at Conestoga College with a 4.0 GPA.">
     <meta name="author" content="Mehdi Ebrahimzadeh">
-    <meta name="keywords" content="Software Engineer, Full-Stack Developer, Cloud Architect, Backend Developer, Mehdi Ebrahimzadeh">
-    <meta property="og:title" content="Mehdi Ebrahimzadeh | Software Engineer">
-    <meta property="og:description" content="Software Engineering student at Conestoga College with 4.0 GPA. Co-Founder of Oktav, building scalable distributed systems.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mahd1exo.github.io">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mehdi Ebrahimzadeh | Software Engineer">
-    <meta name="twitter:description" content="Software Engineering student with expertise in distributed systems and cloud architecture">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
-    <title>Mehdi Ebrahimzadeh | Software Engineer</title>
-    
-    <!-- Fonts -->
+    <meta name="keywords" content="Mehdi Ebrahimzadeh, performance engineer, software engineer, AI developer tooling, MCP, GraphRAG, distributed systems, backend engineer, Waterloo, Conestoga College, SOTI">
+    <link rel="canonical" href="https://mahd1exo.github.io/">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://mahd1exo.github.io/">
+    <meta property="og:title" content="Mehdi Ebrahimzadeh — Performance &amp; Software Engineer">
+    <meta property="og:description" content="Performance Engineer co-op at SOTI, co-founder of Eyval (Velocity), 4.0 GPA at Conestoga College. I build systems that stay fast and tooling that makes engineers faster.">
+    <meta property="og:locale" content="en_CA">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mehdi Ebrahimzadeh — Performance &amp; Software Engineer">
+    <meta name="twitter:description" content="Performance Engineer co-op at SOTI, co-founder of Eyval (Velocity), 4.0 GPA at Conestoga College.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2308090b'/><text x='32' y='43' font-family='ui-monospace,monospace' font-size='28' font-weight='700' fill='%23ff6a3d' text-anchor='middle'>ME</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // Set the theme before first paint so there is no flash of the wrong palette.
+        (function () {
+            try {
+                var stored = localStorage.getItem('theme');
+                var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loader-wrapper">
-        <div class="terminal-loader">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <span class="terminal-btn red"></span>
-                    <span class="terminal-btn yellow"></span>
-                    <span class="terminal-btn green"></span>
-                </div>
-                <div class="terminal-title">mehdi@portfolio ~ % </div>
-            </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-text" id="terminal-text-1"></span>
-                    <span class="terminal-cursor">|</span>
-                </div>
-                <div class="terminal-line" id="terminal-line-2" style="display: none;">
-                    <span class="terminal-output" id="terminal-output-1"></span>
-                </div>
-                <div class="terminal-line" id="terminal-line-3" style="display: none;">
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-text" id="terminal-text-2"></span>
-                    <span class="terminal-cursor">|</span>
-                </div>
-                <div class="terminal-line" id="terminal-line-4" style="display: none;">
-                    <span class="terminal-output" id="terminal-output-2"></span>
-                </div>
-                <div class="terminal-line" id="terminal-line-5" style="display: none;">
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-text" id="terminal-text-3"></span>
-                    <span class="terminal-cursor">|</span>
-                </div>
-                <div class="terminal-progress" id="terminal-progress" style="display: none;">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                    <div class="progress-text" id="progress-text">Loading... 0%</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- 3D Background Container -->
-    <div id="three-container"></div>
-    
-    <!-- Matrix Rain Background -->
-    <canvas id="matrix-rain"></canvas>
-    
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
-    
-    <!-- Floating Shapes -->
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
-        <div class="shape shape-6"></div>
-        <div class="shape shape-7"></div>
-    </div>
-    
-    <!-- Interactive Mouse Trail -->
-    <canvas id="mouse-trail"></canvas>
+    <!-- Icon sprite -->
+    <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7 0-.7 0-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.3-.5-1.5.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4 18.3 4.3 18.3 4.3c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.4 20.5h-3.6V15c0-1.4 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.04c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1Zm1.8 13.1H3.6V9h3.5v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7Z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m3 7.5 9 5.5 9-5.5"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.1 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10.5c0 5.5-8 11.5-8 11.5S4 16 4 10.5a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.2" r="2.8"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h14"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2.5H6.8A1.8 1.8 0 0 0 5 4.3v15.4a1.8 1.8 0 0 0 1.8 1.8h10.4a1.8 1.8 0 0 0 1.8-1.8V7.5Z"/><path d="M14 2.5v5h5"/><path d="M9 13h6M9 16.5h4"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 13.2A8.5 8.5 0 1 1 10.8 3a7 7 0 0 0 10.2 10.2Z"/></symbol>
+        <symbol id="i-external" viewBox="0 0 24 24"><path d="M14.5 3.5H20.5V9.5"/><path d="M10.5 13.5 20.5 3.5"/><path d="M20.5 14.5V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19V5A1.5 1.5 0 0 1 5 3.5h4.5"/></symbol>
+        <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0Z"/><path d="M7 5.5H4.5v1A3.5 3.5 0 0 0 7.6 10M17 5.5h2.5v1a3.5 3.5 0 0 1-3.1 3.5"/><path d="M12 14v3.5M8.5 20.5h7l-.8-3h-5.4Z"/></symbol>
+        <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12.5 2.5c3.5 1.4 6 5 6 9.3l-3.3 3.3H9.3L6 11.8c0-4.3 2.5-7.9 6.5-9.3Z"/><circle cx="12.4" cy="9.5" r="2"/><path d="M9.3 15.1 7 17.4m8-2.3 2.3 2.3M9.5 19.5c-1 1.5-3 2-3 2s.5-2 2-3"/></symbol>
+        <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="15" r="6"/><path d="M12 12.8 13 15h2l-1.6 1.3.6 2.2-2-1.2-2 1.2.6-2.2L9 15h2Z"/><path d="M8.5 9 6 2.5h12L15.5 9"/></symbol>
+        <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2.5 9 9.5-4.5L21.5 9 12 13.5 2.5 9Z"/><path d="M6.5 11v5c3 2.6 8 2.6 11 0v-5"/><path d="M21.5 9v5.5"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 21.5s8-3.8 8-9.5V5.2L12 2.5 4 5.2V12c0 5.7 8 9.5 8 9.5Z"/><path d="m9 12 2.2 2.2L15.2 10"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+        <symbol id="i-send" viewBox="0 0 24 24"><path d="M21.5 2.5 10.8 13.2"/><path d="M21.5 2.5 14.7 21.5l-3.9-8.3-8.3-3.9Z"/></symbol>
+    </svg>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress"></div>
+    <div class="progress" id="progress" aria-hidden="true"><span></span></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-bracket">&lt;</span>
-                <span class="logo-text">ME</span>
-                <span class="logo-bracket">/&gt;</span>
+    <header class="nav" id="nav">
+        <div class="shell nav__inner">
+            <a class="brand" href="#top" aria-label="Mehdi Ebrahimzadeh — home">
+                <span class="brand__mark">ME</span>
+                <span class="brand__meta">Mehdi Ebrahimzadeh<em>Performance &amp; Software Engineer</em></span>
             </a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
+
+            <nav class="nav__links" id="nav-links" aria-label="Sections">
+                <a href="#about" class="nav__link">About</a>
+                <a href="#experience" class="nav__link">Experience</a>
+                <a href="#projects" class="nav__link">Projects</a>
+                <a href="#skills" class="nav__link">Skills</a>
+                <a href="#contact" class="nav__link">Contact</a>
+                <a href="Mehdi_Ebrahimzadeh_Resume.pdf" target="_blank" rel="noopener" class="nav__resume">
+                    Résumé <svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>
+                </a>
+            </nav>
+
+            <div class="nav__actions">
+                <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme">
+                    <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+                    <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"></use></svg>
                 </button>
-                <button class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="icon-btn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                    <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"></use></svg>
+                    <svg class="icon icon--close" aria-hidden="true"><use href="#i-close"></use></svg>
                 </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="reveal-text">
-                        <h1 class="hero-greeting glitch-text" data-text="Hi, I'm">Hi, I'm</h1>
-                    </div>
-                    <div class="reveal-text">
-                        <h2 class="hero-name gradient-morph">Mehdi Ebrahimzadeh</h2>
-                    </div>
-                    <div class="hero-title">
-                        <span class="typing-wrapper">
-                            <span class="typing-text"></span>
-                            <span class="cursor blinking">|</span>
-                        </span>
-                    </div>
-                    <p class="hero-description">
-                        Software Engineering student at Conestoga College with a 4.0 GPA. 
-                        Co-Founder of Oktav, building scalable distributed systems and cloud-native applications.
+    <main id="main">
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="top">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="shell hero__inner">
+                <div class="hero__text">
+                    <p class="status reveal">
+                        <span class="status__dot" aria-hidden="true"></span>
+                        Waterloo, ON &nbsp;·&nbsp; Performance Engineer co-op at SOTI
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary ripple-effect magnetic-button">
-                            <span>View My Work</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="Mehdi_Ebrahimzadeh_Resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary ripple-effect magnetic-button">
-                            <span>View Resume</span>
-                            <i class="fas fa-file-pdf"></i>
-                        </a>
-                        <a href="#contact" class="btn btn-secondary ripple-effect magnetic-button">
-                            <span>Get In Touch</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </a>
-                    </div>
-                    <div class="hero-social">
-                        <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:mehdi.ebr.work@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="blob-container">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <path class="blob" fill="url(#gradient)" d="M45.4,-58.8C58.1,-50.3,67.4,-35.6,71.8,-19.3C76.2,-3,75.7,14.9,69.3,30.1C62.9,45.3,50.6,57.8,36.1,64.9C21.6,72,-5.1,73.7,-28.6,68.4C-52.1,63.1,-72.4,50.8,-80.6,33.4C-88.8,16,-84.9,-6.5,-76.7,-25.3C-68.5,-44.1,-56,-59.2,-41.1,-67.2C-26.2,-75.2,-9,-76.1,5.8,-73.8C20.6,-71.5,32.7,-67.3,45.4,-58.8Z" transform="translate(100 100)" />
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <div class="profile-placeholder">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <p>Scroll Down</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title neon-glow">About Me</h2>
-                <p class="section-subtitle gradient-text">Get to know me better</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Building the Future, One Line at a Time</h3>
-                    <p>
-                        I'm a passionate Software Engineering student at Conestoga College with a perfect 4.0 GPA, 
-                        specializing in distributed systems and cloud-native architectures. As Co-Founder and Lead 
-                        Software Engineer at Oktav, I've built scalable backend services that handle thousands of 
-                        concurrent users.
+                    <h1 class="hero__name reveal">Mehdi<br>Ebrahimzadeh</h1>
+
+                    <p class="hero__role reveal">
+                        <span class="mono accent">&gt;</span>
+                        <span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span>
                     </p>
-                    <p>
-                        My journey in tech has taken me from optimizing .NET backends to designing microservices 
-                        architectures with Go and implementing real-time systems with WebSockets. I'm driven by 
-                        challenges that push the boundaries of what's possible.
+
+                    <p class="hero__lede reveal">
+                        I build systems that stay fast under load — and tooling that makes other
+                        engineers faster. Currently profiling and automating performance for
+                        <strong>MobiControl at SOTI</strong>, shipping AI developer tooling on the side of the
+                        same desk, and co-founding <strong>Eyval</strong> out of Velocity at the University of Waterloo.
                     </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="2">0</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="20">0</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="99.9">0</div>
-                            <div class="stat-label">Uptime %</div>
-                        </div>
+
+                    <div class="hero__cta reveal">
+                        <a href="#projects" class="btn btn--primary">
+                            See the work <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                        </a>
+                        <a href="Mehdi_Ebrahimzadeh_Resume.pdf" target="_blank" rel="noopener" class="btn btn--ghost">
+                            <svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg> Résumé
+                        </a>
                     </div>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-trophy"></i>
-                            <span>Top 10 Finalist at Velocity (U of Waterloo)</span>
+
+                    <div class="hero__social reveal">
+                        <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg></a>
+                        <a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg></a>
+                        <a href="mailto:mehdi.ebr.work@gmail.com" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg></a>
+                        <span class="hero__social-line" aria-hidden="true"></span>
+                        <a href="mailto:mehdi.ebr.work@gmail.com" class="hero__social-mail">mehdi.ebr.work@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="hero__card reveal" aria-hidden="true">
+                    <div class="card-term">
+                        <div class="card-term__bar">
+                            <span></span><span></span><span></span>
+                            <p class="mono">profile.json</p>
                         </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-award"></i>
-                            <span>$29,000 Scholarship from Global Affairs Canada</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-medal"></i>
-                            <span>2nd Place - ConHacks 2025 Hackathon</span>
-                        </div>
+                        <pre class="card-term__body mono"><code>{
+  <span class="k">"role"</span>: <span class="s">"Performance Engineer (Co-op)"</span>,
+  <span class="k">"company"</span>: <span class="s">"SOTI"</span>,
+  <span class="k">"also"</span>: <span class="s">"Co-Founder @ Eyval · Velocity"</span>,
+  <span class="k">"based"</span>: <span class="s">"Waterloo, ON"</span>,
+  <span class="k">"focus"</span>: [
+    <span class="s">"performance engineering"</span>,
+    <span class="s">"AI developer tooling"</span>,
+    <span class="s">"distributed backends"</span>
+  ],
+  <span class="k">"languages"</span>: [<span class="s">"C#"</span>, <span class="s">"Go"</span>, <span class="s">"TypeScript"</span>,
+                 <span class="s">"Python"</span>, <span class="s">"Rust"</span>],
+  <span class="k">"education"</span>: {
+    <span class="k">"school"</span>: <span class="s">"Conestoga College"</span>,
+    <span class="k">"gpa"</span>: <span class="n">4.0</span>,
+    <span class="k">"rank"</span>: <span class="s">"1st in cohort"</span>
+  }
+}</code></pre>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title neon-glow">Experience</h2>
-                <p class="section-subtitle">My professional journey</p>
+        <!-- ============ METRICS ============ -->
+        <section class="metrics" aria-label="Selected results">
+            <div class="shell metrics__grid">
+                <div class="metric reveal">
+                    <p class="metric__value mono"><span data-count="80">0</span>%</p>
+                    <p class="metric__label">manual test effort removed with in-house automation at SOTI</p>
+                </div>
+                <div class="metric reveal">
+                    <p class="metric__value mono">30–70%</p>
+                    <p class="metric__label">lower Copilot credit spend, ledger-tracked, via an MCP server + CLI</p>
+                </div>
+                <div class="metric reveal">
+                    <p class="metric__value mono"><span data-count="95">0</span>%</p>
+                    <p class="metric__label">research data-prep time saved by automating dataset pipelines</p>
+                </div>
+                <div class="metric reveal">
+                    <p class="metric__value mono"><span data-count="4.0" data-decimals="1">0</span>&thinsp;<span class="metric__sub">/ 4.0</span></p>
+                    <p class="metric__label">GPA at Conestoga — ranked 1st in cohort by term GPA</p>
+                </div>
             </div>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Co-Founder & Lead Software Engineer</h3>
-                            <span class="timeline-company">Oktav</span>
-                            <span class="timeline-date">May 2025 - Sep 2025</span>
-                            <span class="timeline-location">Waterloo, ON</span>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section class="section" id="about">
+            <div class="shell">
+                <header class="section__head reveal">
+                    <p class="eyebrow mono"><span class="eyebrow__num">01</span> About</p>
+                    <h2 class="section__title">Fast systems, measured honestly.</h2>
+                </header>
+
+                <div class="about">
+                    <div class="about__body reveal">
+                        <p class="lede">
+                            I'm a Software Engineering Technology student at Conestoga College, ranked
+                            first in my cohort by term GPA with a 97% average across all courses — and I've
+                            spent every term since 2022 shipping production code alongside it.
+                        </p>
+                        <p>
+                            At <strong>SOTI</strong> I work on performance engineering for MobiControl: in-house
+                            automation tooling that cut manual test effort by 80%, staging sanity and health
+                            checks accelerated 84% at equal accuracy, and CPU, memory and SQL hotspots
+                            isolated per release with JMeter, dotTrace and Grafana.
+                        </p>
+                        <p>
+                            In parallel I work on SOTI's <strong>AI Initiative</strong> — a Copilot-style JMeter agent
+                            that takes load-test authoring from hours to minutes, an MCP server and CLI that
+                            lowered AI credit spend 30–70%, and a local GraphRAG code graph built on
+                            tree-sitter ASTs across 27 languages that lifted agent accuracy on large
+                            repositories by 40%.
+                        </p>
+                        <p>
+                            Before that I co-founded three products — <strong>Eyval</strong> (Velocity Summer 2026),
+                            <strong>Oktav</strong> (Velocity Deep Tech, Top 10) and <strong>Versall</strong> — building Go, .NET and
+                            Node backends, gRPC services, Kafka eventing and autoscaled real-time WebSocket
+                            infrastructure.
+                        </p>
+                    </div>
+
+                    <aside class="about__side">
+                        <div class="panel reveal">
+                            <p class="panel__kicker mono"><svg class="icon" aria-hidden="true"><use href="#i-cap"></use></svg> Education</p>
+                            <h3 class="panel__title">Conestoga College</h3>
+                            <p class="panel__sub">Advanced Diploma, Software Engineering Technology (Co-op)</p>
+                            <p class="panel__meta mono">Sep 2024 – Apr 2028 (expected) · Waterloo, ON</p>
+                            <ul class="ticks">
+                                <li>GPA 4.0 / 4.0 — 97% average across all courses</li>
+                                <li>Ranked 1st in the program cohort by term GPA (Fall 2025, Winter 2026)</li>
+                            </ul>
                         </div>
-                        <ul class="timeline-achievements">
-                            <li>Built Go/.NET backends with 8 services and 24 gRPC APIs; integrated OAuth2/OIDC with JWT</li>
-                            <li>Cut build time 45% and tripled release speed via CI/CD and Docker containerization</li>
-                            <li>Boosted uptime to 99.9% with structured logging and tracing; reduced MTTR by 38%</li>
+
+                        <div class="panel panel--list reveal">
+                            <p class="panel__kicker mono"><svg class="icon" aria-hidden="true"><use href="#i-trophy"></use></svg> Recognition</p>
+                            <ul class="awards">
+                                <li>
+                                    <svg class="icon" aria-hidden="true"><use href="#i-rocket"></use></svg>
+                                    <span><strong>Velocity Summer 2026 Accelerator</strong> — University of Waterloo, for Eyval</span>
+                                </li>
+                                <li>
+                                    <svg class="icon" aria-hidden="true"><use href="#i-trophy"></use></svg>
+                                    <span><strong>Top 10 Finalist, Velocity Deep Tech</strong> — University of Waterloo, for Oktav</span>
+                                </li>
+                                <li>
+                                    <svg class="icon" aria-hidden="true"><use href="#i-medal"></use></svg>
+                                    <span><strong>2nd Place of 40+ teams, ConHacks 2025</strong> — AI-powered incident triage tool in 48 hours</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EXPERIENCE ============ -->
+        <section class="section section--alt" id="experience">
+            <div class="shell">
+                <header class="section__head reveal">
+                    <p class="eyebrow mono"><span class="eyebrow__num">02</span> Experience</p>
+                    <h2 class="section__title">Seven roles, four years, one throughline.</h2>
+                </header>
+
+                <ol class="timeline">
+                    <li class="job reveal" data-current>
+                        <div class="job__aside">
+                            <p class="job__date mono">May 2026 — Present</p>
+                            <p class="job__place mono">Mississauga, ON</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">SOTI <span class="chip chip--live">Current</span></h3>
+
+                            <div class="job__role">
+                                <h4>Performance Engineer Intern (Co-op)</h4>
+                                <ul>
+                                    <li>Cut manual test effort <b>80%</b> by building in-house automation tooling for MobiControl performance test runs.</li>
+                                    <li>Accelerated MobiControl staging sanity and health checks <b>84%</b> at equal accuracy by optimizing scenario runs.</li>
+                                    <li>Isolated CPU, memory and SQL hotspots per release with JMeter and dotTrace; tracked KPIs in Grafana.</li>
+                                </ul>
+                            </div>
+
+                            <div class="job__role">
+                                <h4>AI Initiative — AI Engineering &amp; Developer Tooling <span class="chip">concurrent</span></h4>
+                                <ul>
+                                    <li>Built a Copilot-style JMeter agent that writes and checks JMX, taking load-test authoring from <b>hours to minutes</b>.</li>
+                                    <li>Lowered Copilot credit spend <b>30–70%</b> (ledger-tracked) via an MCP server and CLI in TypeScript with 13 tools.</li>
+                                    <li>Lifted agent accuracy on large repos <b>40%</b> via tree-sitter ASTs across 27 languages and a local GraphRAG code graph.</li>
+                                </ul>
+                            </div>
+
+                            <ul class="tags">
+                                <li>JMeter</li><li>dotTrace</li><li>Grafana</li><li>C#</li><li>TypeScript</li><li>MCP</li><li>tree-sitter</li><li>GraphRAG</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__aside">
+                            <p class="job__date mono">May 2026 — Sep 2026</p>
+                            <p class="job__place mono">Waterloo, ON</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">Eyval <span class="job__sub">Velocity Summer 2026 Accelerator · University of Waterloo</span></h3>
+                            <div class="job__role">
+                                <h4>Co-Founder &amp; Software Engineer</h4>
+                                <ul>
+                                    <li>Built a governance layer and shared infrastructure enforcing <b>12 policy and audit checks</b> across <b>50+ AI agents</b>.</li>
+                                    <li>Shipped the MVP in <b>6 weeks</b> to 3 pilot design partners by leading the Go/TypeScript control-plane build.</li>
+                                </ul>
+                            </div>
+                            <ul class="tags">
+                                <li>Go</li><li>TypeScript</li><li>AI agents</li><li>Policy &amp; audit</li><li>Control plane</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__aside">
+                            <p class="job__date mono">Sep 2025 — Apr 2026</p>
+                            <p class="job__place mono">Cambridge, ON</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">Conestoga Health &amp; Science Research Lab</h3>
+                            <div class="job__role">
+                                <h4>Research Assistant II — Data Analysis</h4>
+                                <ul>
+                                    <li>Saved <b>95%</b> of research data-prep time by automating lab study dataset pipelines in Python (Pandas/NumPy).</li>
+                                    <li>Delivered <b>6 interactive dashboards</b> for 8 researchers, turning days of manual reporting into same-day results.</li>
+                                </ul>
+                            </div>
+                            <ul class="tags">
+                                <li>Python</li><li>Pandas</li><li>NumPy</li><li>Dashboards</li><li>Data pipelines</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__aside">
+                            <p class="job__date mono">May 2025 — Sep 2025</p>
+                            <p class="job__place mono">Waterloo, ON</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">Oktav <span class="job__sub">Velocity Deep Tech · Top 10 Finalist</span></h3>
+                            <div class="job__role">
+                                <h4>Co-Founder &amp; Software Engineer</h4>
+                                <ul>
+                                    <li>Designed <b>8 services and 24 gRPC APIs</b> in Go/.NET, secured with OAuth2/OIDC and JWT-based auth.</li>
+                                </ul>
+                            </div>
+                            <ul class="tags">
+                                <li>Go</li><li>.NET</li><li>gRPC</li><li>OAuth2 / OIDC</li><li>Docker</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__aside">
+                            <p class="job__date mono">Sep 2024 — May 2025</p>
+                            <p class="job__place mono">Toronto, ON</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">Versall</h3>
+                            <div class="job__role">
+                                <h4>Co-Founder &amp; Software Engineer</h4>
+                                <ul>
+                                    <li>Shipped <b>5 Node.js backend modules</b> — auth, billing, scheduling and payments — plus autoscaled WebSocket services.</li>
+                                    <li>Wired Kafka eventing and distributed tracing across all services, giving end-to-end visibility for incident triage.</li>
+                                </ul>
+                            </div>
+                            <ul class="tags">
+                                <li>Node.js</li><li>WebSockets</li><li>Kafka</li><li>Distributed tracing</li><li>AWS</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__aside">
+                            <p class="job__date mono">Jan 2025 — Apr 2025</p>
+                            <p class="job__place mono">Peterborough, ON</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">Intelligent Innovations Lab</h3>
+                            <div class="job__role">
+                                <h4>Software Engineer</h4>
+                                <ul>
+                                    <li>Halved deployment time with automated GitHub Actions pipelines for <b>12 Docker services</b>; cut tech debt <b>30%</b>.</li>
+                                </ul>
+                            </div>
+                            <ul class="tags">
+                                <li>GitHub Actions</li><li>Docker</li><li>CI/CD</li><li>Flutter</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__aside">
+                            <p class="job__date mono">Sep 2022 — Apr 2023</p>
+                            <p class="job__place mono">Remote</p>
+                        </div>
+                        <div class="job__main">
+                            <h3 class="job__company">Douran Co.</h3>
+                            <div class="job__role">
+                                <h4>Software Engineer</h4>
+                                <ul>
+                                    <li>Raised .NET backend throughput <b>30%</b> through async I/O; tuned SQL Server for over <b>100k daily transactions</b>.</li>
+                                </ul>
+                            </div>
+                            <ul class="tags">
+                                <li>.NET</li><li>Async I/O</li><li>SQL Server</li><li>PostgreSQL</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============ PROJECTS ============ -->
+        <section class="section" id="projects">
+            <div class="shell">
+                <header class="section__head reveal">
+                    <p class="eyebrow mono"><span class="eyebrow__num">03</span> Projects</p>
+                    <h2 class="section__title">Things I built end to end.</h2>
+                </header>
+
+                <div class="cards">
+                    <a class="card reveal" href="https://github.com/Mahd1exo/Health_System" target="_blank" rel="noopener">
+                        <p class="card__index mono">01</p>
+                        <h3 class="card__title">BioCheck AI</h3>
+                        <p class="card__text">
+                            A privacy-first pipeline running on local APIs that turns raw lab results into
+                            clinician-ready reports in <b>under 5 seconds</b> — no patient data leaves the machine.
+                        </p>
+                        <ul class="tags tags--sm">
+                            <li>React</li><li>ASP.NET Core</li><li>PostgreSQL</li><li>Docker</li>
                         </ul>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">.NET Core</span>
-                            <span class="tech-tag">gRPC</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Kubernetes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Backend Developer & System Designer</h3>
-                            <span class="timeline-company">Versall</span>
-                            <span class="timeline-date">Sep 2024 - May 2025</span>
-                            <span class="timeline-location">Toronto, ON</span>
-                        </div>
-                        <ul class="timeline-achievements">
-                            <li>Shipped an AI platform with 5 Node.js modules for auth, billing, scheduling, and payments</li>
-                            <li>Engineered scalable WebSocket services with health checks and autoscaling</li>
-                            <li>Reduced MTTR by 29% via Kafka eventing and distributed tracing</li>
-                        </ul>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">Kafka</span>
-                            <span class="tech-tag">AWS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Software Engineering Intern</h3>
-                            <span class="timeline-company">Intelligent Innovations Lab</span>
-                            <span class="timeline-date">Jan 2025 - Apr 2025</span>
-                            <span class="timeline-location">Peterborough, ON</span>
-                        </div>
-                        <ul class="timeline-achievements">
-                            <li>Reduced tech debt 30% with comprehensive documentation and architecture diagrams</li>
-                            <li>Cut deployment time 50% by implementing automated GitHub Actions pipelines</li>
-                            <li>Integrated Flutter and web UIs with backend services</li>
-                        </ul>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">GitHub Actions</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Software Engineering Intern</h3>
-                            <span class="timeline-company">Douran Co.</span>
-                            <span class="timeline-date">Sep 2022 - Apr 2023</span>
-                            <span class="timeline-location">Remote</span>
-                        </div>
-                        <ul class="timeline-achievements">
-                            <li>Refactored .NET backends using async I/O to boost throughput 30%</li>
-                            <li>Optimized SQL Server and PostgreSQL schemas for 100k+ daily transactions</li>
-                            <li>Cut security incidents 15% via endpoint hardening and code reviews</li>
-                        </ul>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">.NET</span>
-                            <span class="tech-tag">SQL Server</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title neon-glow">Featured Projects</h2>
-                <p class="section-subtitle">Things I've built</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-tilt>
-                    <div class="project-image">
-                        <canvas class="project-particles"></canvas>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Mahd1exo/Health_System" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>BioCheck AI</h3>
-                        <p>Privacy-first medical results pipeline that normalizes data into clinician-ready reports via local APIs.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>ASP.NET Core</span>
-                            <span>PostgreSQL</span>
-                            <span>Docker</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-image">
-                        <canvas class="project-particles"></canvas>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Mahd1exo/Health-Monitoring-System" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Health Monitoring System</h3>
-                        <p>Monitors vital signs using fuzzy logic and GenAI (OpenAI + Google) for intelligent health analysis.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Go</span>
-                            <span>Rust</span>
-                            <span>OpenAI API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-image">
-                        <canvas class="project-particles"></canvas>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Mahd1exo/App-Generator" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI-Enhanced App Generator</h3>
-                        <p>OpenAI-powered GUI generator with machine learning feedback loop and automated logging.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>scikit-learn</span>
-                            <span>SQLite</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card tilt-card magnetic-element glow-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-image">
-                        <canvas class="project-particles"></canvas>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Mahd1exo/Data-Structures-Demo" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Data Structures Visualizer</h3>
-                        <p>Full-stack educational platform to visualize complex algorithms via interactive components.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>C</span>
-                            <span>CivetWeb</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">My technical expertise</p>
-            </div>
-            <div class="skills-container">
-                <div class="skill-category" data-aos="fade-up">
-                    <h3><i class="fas fa-code"></i> Languages</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">C#</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Go</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">TypeScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">C/C++</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="82"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks & Libraries</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">.NET Core</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">React</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">gRPC</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Django</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="82"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="92"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Kubernetes</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">AWS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Git</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">CI/CD</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certifications -->
-            <div class="certifications" data-aos="fade-up">
-                <h3>Certifications</h3>
-                <div class="cert-grid">
-                    <div class="cert-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Certified Ethical Hacker (CEH)</span>
-                    </div>
-                    <div class="cert-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>SANS SEC 504</span>
-                    </div>
-                    <div class="cert-item">
-                        <i class="fab fa-linux"></i>
-                        <span>LPIC-1 & LPIC-2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title neon-glow">Get In Touch</h2>
-                <p class="section-subtitle">Let's build something amazing together</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item" data-aos="fade-right">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <a href="mailto:mehdi.ebr.work@gmail.com">mehdi.ebr.work@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item" data-aos="fade-right" data-aos-delay="100">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <a href="tel:+15145505492">+1 514-550-5492</a>
-                        </div>
-                    </div>
-                    <div class="contact-item" data-aos="fade-right" data-aos-delay="200">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Waterloo, ON, Canada</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" data-aos="fade-left">
-                    <div class="form-group">
-                        <input type="text" id="name" required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" required>
-                        <label for="subject">Subject</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="5" required></textarea>
-                        <label for="message">Message</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-bracket">&lt;</span>
-                    <span class="logo-text">ME</span>
-                    <span class="logo-bracket">/&gt;</span>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i>
+                        <span class="card__go mono">View repository <svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></span>
                     </a>
-                    <a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener">
-                        <i class="fab fa-linkedin"></i>
+
+                    <a class="card reveal" href="https://github.com/Mahd1exo/Health-Monitoring-System" target="_blank" rel="noopener">
+                        <p class="card__index mono">02</p>
+                        <h3 class="card__title">Health Monitoring System</h3>
+                        <p class="card__text">
+                            Flags abnormal temperature, pulse and SpO₂ at <b>95% accuracy</b> across 1,000+
+                            readings, combining fuzzy logic with GenAI for vital-sign analysis.
+                        </p>
+                        <ul class="tags tags--sm">
+                            <li>Python</li><li>Go</li><li>Rust</li><li>NumPy / Pandas</li><li>OpenAI API</li>
+                        </ul>
+                        <span class="card__go mono">View repository <svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></span>
                     </a>
-                    <a href="mailto:mehdi.ebr.work@gmail.com">
-                        <i class="fas fa-envelope"></i>
+
+                    <a class="card reveal" href="https://github.com/Mahd1exo/Data-Structures-Demo" target="_blank" rel="noopener">
+                        <p class="card__index mono">03</p>
+                        <h3 class="card__title">Data Structures Visualizer</h3>
+                        <p class="card__text">
+                            A full-stack teaching platform with interactive, step-by-step animations of
+                            <b>12 data structures and algorithms</b>, served from a C backend.
+                        </p>
+                        <ul class="tags tags--sm">
+                            <li>React</li><li>C</li><li>CivetWeb</li>
+                        </ul>
+                        <span class="card__go mono">View repository <svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></span>
+                    </a>
+
+                    <a class="card reveal" href="https://github.com/Mahd1exo/App-Generator" target="_blank" rel="noopener">
+                        <p class="card__index mono">04</p>
+                        <h3 class="card__title">AI-Enhanced App Generator</h3>
+                        <p class="card__text">
+                            An LLM-driven GUI generator with a machine-learning feedback loop and automated
+                            logging, so each generated interface improves on the last.
+                        </p>
+                        <ul class="tags tags--sm">
+                            <li>Python</li><li>PyTorch</li><li>scikit-learn</li><li>SQLite</li>
+                        </ul>
+                        <span class="card__go mono">View repository <svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></span>
                     </a>
                 </div>
-                <p class="footer-copyright">
-                    &copy; 2025 Mehdi Ebrahimzadeh. Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i>
+
+                <p class="cards__more reveal">
+                    More on <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener">github.com/Mahd1exo <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
                 </p>
             </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section class="section section--alt" id="skills">
+            <div class="shell">
+                <header class="section__head reveal">
+                    <p class="eyebrow mono"><span class="eyebrow__num">04</span> Skills</p>
+                    <h2 class="section__title">The toolkit, honestly labelled.</h2>
+                </header>
+
+                <div class="stack">
+                    <div class="stack__row reveal">
+                        <h3 class="stack__label mono">Languages</h3>
+                        <ul class="tags tags--lg">
+                            <li>C#</li><li>Python</li><li>C / C++</li><li>Java</li><li>TypeScript</li><li>Go</li><li>Rust</li><li>Groovy</li><li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="stack__row reveal">
+                        <h3 class="stack__label mono">AI / ML</h3>
+                        <ul class="tags tags--lg">
+                            <li>RAG</li><li>GraphRAG</li><li>MCP</li><li>LangChain</li><li>LangGraph</li><li>MLflow</li><li>PyTorch</li><li>scikit-learn</li>
+                        </ul>
+                    </div>
+                    <div class="stack__row reveal">
+                        <h3 class="stack__label mono">Performance &amp; Testing</h3>
+                        <ul class="tags tags--lg">
+                            <li>JMeter</li><li>k6</li><li>dotTrace</li><li>PerfView</li><li>Grafana</li><li>Prometheus</li><li>Playwright</li><li>Load testing</li><li>Profiling</li>
+                        </ul>
+                    </div>
+                    <div class="stack__row reveal">
+                        <h3 class="stack__label mono">Frameworks</h3>
+                        <ul class="tags tags--lg">
+                            <li>.NET Core</li><li>SignalR</li><li>gRPC</li><li>WebSockets</li><li>Kafka</li><li>Django</li><li>Node.js</li><li>React</li><li>Next.js</li><li>NumPy</li><li>Pandas</li>
+                        </ul>
+                    </div>
+                    <div class="stack__row reveal">
+                        <h3 class="stack__label mono">Infra &amp; Data</h3>
+                        <ul class="tags tags--lg">
+                            <li>Docker</li><li>Kubernetes</li><li>AWS</li><li>Azure</li><li>Jenkins</li><li>GitHub Actions</li><li>SQL Server</li><li>PostgreSQL</li><li>Redis</li><li>MongoDB</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="certs reveal">
+                    <h3 class="stack__label mono">Certifications</h3>
+                    <ul class="certs__list">
+                        <li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> Certified Ethical Hacker (CEH)</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> SANS SEC 504</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> LPIC-1 &amp; LPIC-2 (Linux)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section" id="contact">
+            <div class="shell">
+                <header class="section__head reveal">
+                    <p class="eyebrow mono"><span class="eyebrow__num">05</span> Contact</p>
+                    <h2 class="section__title">Let's talk about something fast.</h2>
+                </header>
+
+                <div class="contact">
+                    <div class="contact__side reveal">
+                        <p class="lede">
+                            Open to co-op and new-grad software engineering roles, and always happy to talk
+                            performance, AI tooling or backend architecture.
+                        </p>
+                        <ul class="contact__list">
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                                <span><em class="mono">Email</em><a href="mailto:mehdi.ebr.work@gmail.com">mehdi.ebr.work@gmail.com</a></span>
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+                                <span><em class="mono">Phone</em><a href="tel:+15145505492">+1 514-550-5492</a></span>
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+                                <span><em class="mono">Based in</em>Waterloo, Ontario, Canada</span>
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                                <span><em class="mono">LinkedIn</em><a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener">linkedin.com/in/mehdi-ebr</a></span>
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                                <span><em class="mono">GitHub</em><a href="https://github.com/Mahd1exo" target="_blank" rel="noopener">github.com/Mahd1exo</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form class="form reveal" id="contact-form" novalidate>
+                        <p class="form__note mono">This opens your mail app with the message ready to send.</p>
+                        <div class="field">
+                            <label for="f-name">Your name</label>
+                            <input type="text" id="f-name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="f-email">Your email</label>
+                            <input type="email" id="f-email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="f-subject">Subject</label>
+                            <input type="text" id="f-subject" name="subject" required>
+                        </div>
+                        <div class="field">
+                            <label for="f-message">Message</label>
+                            <textarea id="f-message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--block">
+                            Compose email <svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg>
+                        </button>
+                        <p class="form__status" id="form-status" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="shell foot__inner">
+            <p class="foot__brand"><span class="brand__mark">ME</span> Mehdi Ebrahimzadeh</p>
+            <nav class="foot__links" aria-label="Elsewhere">
+                <a href="https://github.com/Mahd1exo" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://linkedin.com/in/mehdi-ebr" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:mehdi.ebr.work@gmail.com">Email</a>
+                <a href="Mehdi_Ebrahimzadeh_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+            </nav>
+            <p class="foot__note mono">Built from scratch — no framework, no tracking. © <span id="year">2026</span></p>
         </div>
     </footer>
 
-    <!-- Code Rain Container -->
-    <div id="code-rain" class="code-rain-container"></div>
-    
-    <!-- Cursor Glow -->
-    <div class="cursor-glow"></div>
-    
-    <!-- Sound Toggle -->
-    <button class="sound-toggle" id="sound-toggle" aria-label="Toggle sound effects">
-        <i class="fas fa-volume-up"></i>
-    </button>
-    
-    <!-- FPS Monitor (Debug) -->
-    <div class="fps-monitor" id="fps-monitor">60 FPS</div>
-    
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-    <script src="js/main.js"></script>
+    <a class="to-top" id="to-top" href="#top" aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+    </a>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mehdi Ebrahimzadeh",
+      "url": "https://mahd1exo.github.io/",
+      "email": "mailto:mehdi.ebr.work@gmail.com",
+      "telephone": "+1-514-550-5492",
+      "jobTitle": "Performance Engineer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Waterloo", "addressRegion": "ON", "addressCountry": "CA" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Conestoga College" },
+      "worksFor": { "@type": "Organization", "name": "SOTI" },
+      "sameAs": ["https://github.com/Mahd1exo", "https://linkedin.com/in/mehdi-ebr"],
+      "knowsAbout": ["Performance Engineering", "Distributed Systems", "AI Developer Tooling", "Model Context Protocol", "GraphRAG", "Backend Development"]
+    }
+    </script>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
